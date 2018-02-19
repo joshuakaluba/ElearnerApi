@@ -1,0 +1,41 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@if (SignInManager.IsSignedIn( User ))
+{
+    <li class="nav-item header-spacing"><a class="nav-link btn btn-secondary btn-sm" asp-area="" asp-controller="Home" asp-action="UploadCourse">Upload Course</a></li>
+    <li class="nav-item header-spacing"><a class="nav-link btn btn-secondary btn-sm" asp-area="" asp-controller="Courses" asp-action="Index">Courses</a></li>
+
+    <li class="nav-item dropdown admin-controls header-spacing">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Settings
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+        </div>
+    </li>
+
+    <li class="nav-item dropdown header-spacing">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAccountMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @UserManager.GetUserName( User )
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownAccountMenuLink">
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-logout">Log Out</a>
+        </div>
+    </li>
+}
+else
+{
+    <li class="nav-item header-spacing">
+        <a asp-area="" class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+    </li>
+    <li class="nav-item header-spacing">
+        <a asp-area="" class="nav-link " asp-controller="Account" asp-action="Login">Log In</a>
+    </li>
+
+}
+
+<script>
+
+
+</script>

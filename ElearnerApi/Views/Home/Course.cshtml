@@ -1,0 +1,87 @@
+﻿@model ElearnerApi.Data.Models.Course
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<link rel="stylesheet" href="~/css/courses.css?@DateTime.Now.Ticks" />
+<script src="~/js/Core.Course.js?@DateTime.Now.Ticks"></script>
+
+
+<div class="wrapper" style="background-color:white;">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        @*<div class="sidebar-header">
+            @*<h3>@Model.Name</h3>
+        </div>*@
+
+        <ul class="list-unstyled components">
+
+            @foreach (var unit in Model.Units.OrderBy(s=>s.Name))
+            { 
+                <li>
+                    <a href="#@unit.Id" data-toggle="collapse" aria-expanded="false">@unit.Name</a>
+
+                    <ul class="collapse list-unstyled" id="@unit.Id">
+
+                        @foreach(var lesson in unit.Lessons)
+                        {
+                            <li><a id="@lesson.Id" class="lesson-link">@lesson.Name</a></li>
+                        }
+
+                    </ul>
+                </li>
+            }
+
+        </ul>
+
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <div>
+                    <h3 class="text-center">@Model.Name</h3>
+                </div>
+                
+
+            </div>
+        </nav>
+
+        <div class="line"></div>
+        <h3 id="lesson-title">@Model.CategoryId - @Model.Name</h3>
+
+        <div id="lesson-content">
+            @Model.Description
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+    } );
+
+    $( ".lesson-link" ).click( function ( event )
+    {
+        Core.ShowLoadingModal();
+
+        Core.Course.GetLessonById( this.id );        
+    } );
+
+</script>

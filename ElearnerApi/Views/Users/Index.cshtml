@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ElearnerApi.Data.Models.Authentication.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h2 class="text-center">Users</h2>
+
+<form asp-action="Index">
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+                <input class="form-control" id="name" name="name" placeholder="Search">
+            </div>
+        </div>
+        <div class="col-sm">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a asp-controller="Users" asp-action="Index" class="btn btn-secondary">Reset</a>
+        </div>
+    </div>
+</form>
+
+@if (TempData["SearchString"] != null)
+{
+    <div class="row">
+        <div class="col">
+            <p>Search results for: @TempData["SearchString"]</p>
+        </div>
+    </div>
+}
+
+
+<table class="table">
+    <thead>
+        <tr style="background-color: #343A40; color: #fff;">
+            <th>
+                Email
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Date Created
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="border border-dark">
+                <td>
+                    @Html.DisplayFor( modelItem => item.Email )
+                </td>
+                <td>
+                    @Html.DisplayFor( modelItem => item.PhoneNumber )
+                </td>
+                <td>
+                    @Html.DisplayFor( modelItem => item.DateCreated )
+                </td>
+
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Modify
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                            <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        }
+       
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col">
+        <p>Total results found: @Model.Count() </p>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Course Name="Information Systems" CategoryId="IS3000" Description="Basic principles of Information Systems.">
+  <Units>
+    <Unit Name="Unit 1">
+      <Lessons>
+        <Lesson Name="Inflation">
+          <LearningObjects>
+            <LearningObject Name="Vimeo Information" LearningTask="https://www.youtube.com/watch?v=QnhMTdNepk0"></LearningObject>
+            <LearningObject Name="YouTube Link" LearningTask="https://www.youtube.com/watch?v=QnhMTdNepk0"></LearningObject>
+          </LearningObjects>
+        </Lesson>
+        <Lesson Name="Inflation 2" Description="An intro to inflation">
+          <LearningObjects>
+            <LearningObject Name="YouTube Link" LearningTask="&lt;iframe width=&apos;854&apos; height=&apos;480&apos; src=&apos;https://www.youtube.com/embed/AaR1mPrdbTc&apos; frameborder=&apos;0&apos; allow=&apos;autoplay; encrypted-media&apos; allowfullscreen&gt;&lt;/iframe&gt;"></LearningObject>
+            <LearningObject Name="YouTube Link 2" LearningTask="https://www.youtube.com/watch?v=QnhMTdNepk0"></LearningObject>
+            <LearningObject Name="YouTube Link 3" LearningTask="https://www.youtube.com/watch?v=QnhMTdNepk0"></LearningObject>
+          </LearningObjects>
+        </Lesson>
+      </Lessons>
+    </Unit>
+    <Unit Name="Unit 2">
+      <Lessons>
+        <Lesson Name="Macro Inflation" Description="An intro to more inflation">
+          <LearningObjects>
+            <LearningObject Name="CourseHero" LearningTask="https://www.youtube.com/watch?v=QnhMTdNepk0"></LearningObject>
+            <LearningObject Name="YouTube Link" LearningTask="https://www.youtube.com/watch?v=QnhMTdNepk0"></LearningObject>
+          </LearningObjects>
+        </Lesson>
+      </Lessons>
+    </Unit>
+  </Units>
+</Course>
