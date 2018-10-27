@@ -7,6 +7,11 @@ namespace ElearnerApi.Data.DataContext
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        private readonly string serverName = "localhost";
+        private readonly string databaseName = "ElearnerApiDb";
+        private readonly string databaseUser = "root";
+        private readonly string databasePass = "password";
+
         public ApplicationDbContext()
         {
         }
@@ -23,26 +28,19 @@ namespace ElearnerApi.Data.DataContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql( GetConnectionString( ) );
-        }
+            var connectionString
+                = $"Server={serverName};" +
+                    $"database={databaseName};" +
+                        $"uid={databaseUser};" +
+                            $"pwd={databasePass};" +
+                                $"pooling=true;";
 
-        private static string GetConnectionString()
-        {
-            const string serverName = "localhost";
-            const string databaseName = "Elearner";
-            const string databaseUser = "root";
-            const string databasePass = "";
-
-            return $"Server={serverName};" +
-                   $"database={databaseName};" +
-                   $"uid={databaseUser};" +
-                   $"pwd={databasePass};" +
-                   $"pooling=true;";
+            optionsBuilder.UseMySql(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating( builder );
+            base.OnModelCreating(builder);
         }
     }
 }
